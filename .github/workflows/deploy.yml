@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: echo "VITE_GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }}" > .env
       - run: echo "VITE_GOOGLE_CLIENT_SECRET=${{ secrets.VITE_GOOGLE_CLIENT_SECRET }}" >> .env
       - run: npm run build
