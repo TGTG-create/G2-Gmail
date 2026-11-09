@@ -16,12 +16,14 @@ const BLOCK_TAGS = new Set([
 const STRIP_TAGS = new Set(["SCRIPT", "STYLE", "HEAD", "SVG", "NOSCRIPT"]);
 
 /**
- * Replace non-ASCII characters that the G2 monochrome display can't render.
- * Keeps printable ASCII (0x20-0x7E) and tab.
+ * Remove control characters and invisible/zero-width characters but keep
+ * regular Unicode text (e.g. Korean) so the glasses can render it.
  */
 function stripNonAscii(text: string): string {
-  // eslint-disable-next-line no-control-regex
-  return text.replace(/[^\x09\x20-\x7E]/g, "");
+  return text
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x08\x0B-\x1F\x7F]/g, "")
+    .replace(/[\u200B-\u200F\u2028-\u202E\u2060-\u2064\uFEFF\u00AD]/g, "");
 }
 
 /**
