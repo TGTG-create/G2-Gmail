@@ -24,7 +24,7 @@ export const GMAIL_CONFIG = {
   /** Must exactly match the authorized redirect URI in Google Cloud Console. */
   REDIRECT_URI: import.meta.env.DEV
     ? "http://localhost:5173/"
-    : "https://r-castelo.github.io/G2-Gmail/",
+    : "https://tgtg-create.github.io/G2-Gmail/",
 
   SCOPES: "https://www.googleapis.com/auth/gmail.modify",
 
